@@ -1,123 +1,61 @@
-# Heptadev Challenge: Mine AI Monitoring System
 
-A predictive monitoring system for underground mines that uses AI to forecast hazardous events and provide real-time monitoring of environmental and structural conditions.
+Predictive Monitoring System for Underground Mines
+Overview
+The Predictive Monitoring System (PMS) for Underground Mines is designed to improve worker safety and operational efficiency by leveraging AI and machine learning to detect hazardous conditions in real-time. The system monitors factors like gas build-up, temperature fluctuations, humidity changes, vibration, and structural integrity, while providing actionable insights through anomaly detection and hazard visualization.
 
-## Project Overview
+Key Features
+Sensor Data Generation:
 
-This project is a submission for the Heptadev AI Engineering Challenge, focusing on developing an AI-powered monitoring system for underground mines. The system processes real-time sensor data and uses machine learning to predict potential hazardous events, providing early warnings and detailed analysis of mine conditions.
+Simulated sensor data from various sources (gas levels, temperature, humidity, vibration, pressure) to mimic the behavior of sensors in an underground mine.
 
-## Key Features
+Anomaly Detection:
 
-- **Real-time Data Processing**: Ingests and processes data from various sensors including gas levels, temperature, humidity, vibration, and soil pressure
-- **Predictive Analytics**: Uses LSTM networks for time series prediction and anomaly detection
-- **3D Visualization**: Interactive 3D visualization of mine layout and sensor data
-- **UDEC Integration**: Exports mine data to UDEC-compatible format for structural analysis
-- **Power Management**: Optimizes sensor operations based on battery levels and network conditions
-- **Interpretable AI**: Provides detailed explanations for predictions and model decisions
+Uses machine learning models, such as Isolation Forest, to identify anomalous sensor readings that could indicate potential hazards.
 
-## System Architecture
+Risk Visualization:
 
-The system is organized into the following components:
+3D visualizations of mine tunnels with dynamic risk maps, representing different risk levels, to help operators visualize the hazard zones and predict risk evolutions.
 
-### Data Ingestion Layer
-- `src/data_ingestion/sensor_data.py`: Handles real-time sensor data processing
-- `src/data_ingestion/power_management.py`: Manages sensor power and sampling rates
+Setup and Requirements
+Prerequisites
+Python 3.7 or higher.
 
-### Machine Learning Layer
-- `src/ml/predictor.py`: Implements LSTM, Isolation Forest, and Random Forest models
-- `src/ml/model_explainer.py`: Provides model interpretability and explanations
+Required libraries: pandas, numpy, scikit-learn, matplotlib, plotly, shap, and joblib.
 
-### Visualization Layer
-- `src/visualization/mine_visualizer.py`: 3D visualization of mine layout and sensor data
-- `src/visualization/udec_integration.py`: UDEC data conversion and export
-- `src/visualization/dashboard.py`: Interactive monitoring interface
+You can install the required dependencies using the following command:
 
-### API Layer
-- `src/api/main.py`: FastAPI endpoints for data processing and visualization
+bash
+Copy
+Edit
+pip install pandas numpy scikit-learn matplotlib plotly shap joblib
+Project Structure
+Untitled10.ipynb: This Jupyter notebook contains the entire pipeline for generating data, training the model, and visualizing the results.
 
-## Technical Stack
+mock_sensor_data.csv: Simulated sensor data file containing gas levels, temperature, humidity, vibration, and pressure readings.
 
-- **Backend**: Python, FastAPI
-- **Machine Learning**: PyTorch, scikit-learn
-- **Visualization**: Plotly, Dash
-- **Database**: SQLAlchemy, Redis
-- **Testing**: pytest
+anomaly_model.pkl: The trained machine learning model for anomaly detection.
 
-## Setup Instructions
+scaler.pkl: The preprocessing scaler used to standardize the sensor data before model training.
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/heptadev-challenge-mine-ai.git
-cd heptadev-challenge-mine-ai
-```
+Running the Project
+1. Generate Mock Sensor Data
+This step generates synthetic sensor data, including anomalies, to simulate real-world mining conditions. The data is saved in mock_sensor_data.csv, which is later used to train the anomaly detection model.
 
-2. Create and activate a virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+2. Train the Anomaly Detection Model
+An Isolation Forest model is trained on the generated data to detect anomalies that may indicate hazardous conditions (e.g., gas leaks or excessive vibrations). The trained model is saved as anomaly_model.pkl, and the data scaling method used in preprocessing is saved as scaler.pkl.
 
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+3. Visualize Hazard Zones
+The system provides 3D visualizations of risk zones in the underground mine using Plotly. The simulation displays the locations of sensors and the associated risk levels, with color coding to indicate the severity of the risks (e.g., red indicates higher danger).
 
-4. Start the API server:
-```bash
-python src/api/main.py
-```
+4. Model Explainability
+The SHAP (Shapley Additive Explanations) library is used to explain the model’s predictions, highlighting which sensor readings most influence the detection of anomalies. This improves the transparency of the AI system and increases operator trust in the model’s decision-making.
 
-5. Start the dashboard:
-```bash
-python src/visualization/dashboard.py
-```
+Future Enhancements
+Integration of real-time sensor data for continuous hazard monitoring in mines.
 
-## Model Architecture
+Deployment of the anomaly detection model on edge devices for real-time processing without relying on cloud infrastructure.
 
-The system uses three main types of models:
+Improved 3D visualizations to incorporate time-series data and track the evolution of risk over time.
 
-1. **LSTM Network**: For time series prediction of sensor readings
-2. **Isolation Forest**: For anomaly detection in sensor data
-3. **Random Forest**: For hazard classification and risk assessment
-
-## Data Sources
-
-The system processes data from various sensors:
-- Gas sensors (CO, CH4, H2S)
-- Temperature and humidity sensors
-- Vibration sensors
-- Soil pressure sensors
-
-## API Endpoints
-
-- `POST /api/sensor-data`: Ingest sensor data
-- `GET /api/predictions`: Get model predictions
-- `GET /api/visualization`: Get 3D visualization data
-- `GET /api/udec-export`: Export data to UDEC format
-
-## Dashboard Features
-
-- Real-time sensor data monitoring
-- Predictive analytics visualization
-- Battery status and power management
-- Alert system for hazardous conditions
-
-## Deployment Considerations
-
-The system is designed to operate in low-infrastructure environments:
-- Power-efficient sensor operations
-- Intermittent connectivity handling
-- Data compression for low bandwidth
-- Configurable sampling rates
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request 
+Conclusion
+This project showcases the application of AI and machine learning to underground mining safety. By detecting hazardous conditions early and visualizing risk zones in 3D, the system helps enhance worker safety, minimize downtime, and improve operational efficiency in mining environments.
