@@ -1,86 +1,79 @@
 Predictive Monitoring System for Underground Mines
-A predictive system that leverages AI to monitor environmental and structural conditions in underground mines, providing early detection of hazards and visual insight into risk zones.
+🚀 Overview
+The Predictive Monitoring System for underground mines is designed to enhance safety and operational efficiency. By leveraging machine learning and artificial intelligence, this system continuously monitors critical environmental and structural factors in the mine, such as gas levels, temperature, humidity, vibration, and pressure. It employs anomaly detection techniques to identify potential risks and visualizes hazard zones within the mine for informed decision-making.
 
-📌 Overview
-The Predictive Monitoring System (PMS) is designed to enhance underground mining safety and efficiency. It uses AI-powered anomaly detection to identify hazardous patterns in real-time, such as gas build-up, temperature spikes, humidity changes, excessive vibration, and structural pressure. The system combines sensor simulation, machine learning, and 3D visualization to deliver actionable insights.
+Key Features 🌟
+1. Mock Sensor Data Generation 🔢
+Simulates sensor data for monitoring factors like gas levels, temperature, humidity, vibration, and pressure.
 
-🚀 Key Features
-🔧 Sensor Data Simulation
-Simulates sensor readings including:
+Injects anomalies to simulate potential hazards, offering a realistic dataset for testing the anomaly detection model.
 
-Gas levels (e.g., CO, CH₄)
+2. Anomaly Detection Model 🧠
+Uses the Isolation Forest algorithm to detect outliers in the sensor data.
 
-Temperature & humidity
+Identifies patterns that may indicate abnormal or risky conditions, ensuring safety through early detection.
 
-Vibration & soil pressure
+3. 3D Hazard Visualization 🌍
+Generates an interactive 3D visualization using Plotly to map out the risk zones within the mine tunnel.
 
-Mimics the dynamics of real-world underground mining environments.
+Each sensor's location and risk level are displayed, helping to pinpoint hazardous areas more effectively.
 
-🤖 Anomaly Detection
-Utilizes Isolation Forest for unsupervised detection of abnormal readings.
+4. UDEC-style Tunnel Visualization 🛠️
+Provides a 2D simulation of the mine tunnel with risk levels visually represented by colors.
 
-Flags data patterns that deviate from normal operational conditions.
+A hazard map shows sensor locations and helps to quickly assess risky areas.
 
-📊 Risk Visualization
-Provides 3D visualizations of the mine layout.
+Steps and Components 🛠️
+1. Generate Mock Sensor Data
+The system generates synthetic sensor data that mimics real-world conditions.
 
-Risk zones are dynamically color-coded (e.g., red for high danger).
+Anomalies are injected periodically to simulate dangerous situations that could be detected in a real mine environment.
 
-Displays evolving risk based on anomaly distribution.
+2. Train Anomaly Detection Model
+The Isolation Forest algorithm is applied to the sensor data to identify unusual patterns and potential risks.
 
-🧠 Model Explainability
-Integrates SHAP (Shapley Additive Explanations) to interpret model outputs.
+The trained model and scaler are saved for future anomaly detection in real-time scenarios.
 
-Highlights which features most influenced each anomaly prediction.
+3. Simulated UDEC-style Tunnel Visualization
+A 2D hazard map is created, representing sensor locations and their corresponding risk levels.
 
-Improves operator trust in AI decision-making.
+Risk zones are color-coded to provide a quick and clear assessment of hazardous areas.
 
-🛠️ Setup and Requirements
-✅ Prerequisites
-Python 3.7 or higher
+4. 3D Hazard Visualization in a Mine Tunnel
+The system generates a 3D visualization of the mine tunnel, where each sensor’s risk is shown using color gradients.
 
-📦 Required Libraries
-Install dependencies with:
+Depth, width, and length of the tunnel are represented, providing a comprehensive view of the mine’s risk zones.
+
+Installation Requirements 🧰
+To get started, you’ll need the following Python libraries:
+
+pandas
+
+numpy
+
+matplotlib
+
+scikit-learn
+
+joblib
+
+plotly
+
+shap
+
+You can install them all at once by running:
 
 bash
 Copy
 Edit
-pip install pandas numpy scikit-learn matplotlib plotly shap joblib
-📁 Project Structure
-File	Description
-Untitled10.ipynb	Main notebook with code for data generation, model training, and visualization.
-mock_sensor_data.csv	Simulated dataset of sensor readings.
-anomaly_model.pkl	Trained Isolation Forest model for detecting anomalies.
-scaler.pkl	Preprocessing scaler used for feature standardization.
+pip install pandas numpy matplotlib scikit-learn joblib plotly shap
+Next Steps 🌱
+Enhance Anomaly Detection: Explore other machine learning algorithms, such as Autoencoders or clustering models, to improve anomaly detection.
 
-🧪 How to Run
-1️⃣ Generate Mock Sensor Data
-Simulates realistic underground mine data, saved as mock_sensor_data.csv.
+Real-time Deployment: Implement the system to monitor live data from sensors, automatically flagging anomalies.
 
-2️⃣ Train Anomaly Detection Model
-Preprocesses data using StandardScaler.
+Dashboard Integration: Build a real-time dashboard (using Streamlit or Dash) to visualize ongoing sensor data and anomalies for faster, data-driven decision-making.
 
-Trains an Isolation Forest model.
-
-Saves model to anomaly_model.pkl and scaler to scaler.pkl.
-
-3️⃣ Visualize Hazard Zones
-Renders a 3D mine tunnel layout.
-
-Visualizes sensor locations and real-time risk using Plotly.
-
-4️⃣ Explain Predictions
-Uses SHAP to analyze how individual features contribute to each anomaly.
-
-Enhances transparency and decision support.
-
-🔮 Future Enhancements
-⏱️ Real-time data ingestion from physical IoT devices.
-
-🛰️ Edge device deployment for local inference in offline environments.
-
-📈 Time-series visualization to track how risks evolve over time.
-
-✅ Conclusion
-This project demonstrates the integration of AI and visualization for proactive mine safety management. By combining anomaly detection with intuitive 3D mapping, it provides a foundation for intelligent hazard prediction systems in challenging underground environments.
+License 📜
+This project is licensed under the MIT License. For more details, see the LICENSE file.
 
